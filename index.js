@@ -119,9 +119,9 @@ function mapToObj(map){
 
 
 function optimizeAsync(src, cb){
-
-  svgo.optimize(src, function(result){
-
+  svgo.optimize(src).then(function(result){
     return cb(null, result)
+  }).catch(function(error) {
+    throw(error);
   })
 }
